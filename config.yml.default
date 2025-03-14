@@ -1,16 +1,16 @@
-token: "XXXXXXXXXXXXXXXXXXXXXXXX"         # Lichess OAuth2 Token.
+token: "lip_uVpQ5XayMI9iDDR2jsqU"         # Lichess OAuth2 Token.
 
 engines:
   standard:                               # Engine used for standard chess and when no suitable special engine is configured.
     dir: "./engines"                      # Directory containing the engine.
-    name: "stockfish"                     # Binary name of the engine to use.
+    name: "stockfish.exe"                     # Binary name of the engine to use.
     ponder: true                          # Think on opponent's time.
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine. (Commenting allowed)
-      Threads: 4                          # Max CPU threads the engine can use.
+      Threads: 2                          # Max CPU threads the engine can use.
       Hash: 256                           # Max memory (in megabytes) the engine can allocate.
-      Move Overhead: 100                  # Increase if your bot flags games too often.
+      Move Overhead: 200                  # Increase if your bot flags games too often.
 # variants:                               # Engine used for variants when no suitable special engine is configured.
 #   dir: "./engines"                      # Directory containing the engine.
 #   name: "fairy-stockfish"               # Binary name of the engine to use.
@@ -75,7 +75,7 @@ opening_books:
 
 online_moves:
   opening_explorer:
-    enabled: false                        # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
+    enabled: true                        # Activate online moves from Lichess opening explorer. The move that has performed best for this bot is played.
     priority: 300                         # Priority with which this move source is used. Higher priority is used first.
     use_for_variants: false               # Whether the Lichess opening explorer should be used for other variants than standard and chess960.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
@@ -87,7 +87,7 @@ online_moves:
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from Lichess opening explorer. (Comment this line for max moves)
   lichess_cloud:
-    enabled: false                        # Activate online moves from Lichess cloud eval.
+    enabled: true                        # Activate online moves from Lichess cloud eval.
     priority: 200                         # Priority with which this move source is used. Higher priority is used first.
     only_without_book: false              # Whether the cloud should only be used if there is no matching book.
     min_eval_depth: 10                    # Minimum evaluation depth.
@@ -96,7 +96,7 @@ online_moves:
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from Lichess cloud eval. (Comment this line for max moves)
   chessdb:
-    enabled: false                        # Activate online moves from https://chessdb.cn/queryc_en/
+    enabled: true                        # Activate online moves from https://chessdb.cn/queryc_en/
     priority: 100                         # Priority with which this move source is used. Higher priority is used first.
     min_eval_depth: 10                    # Minimum evaluation depth.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
@@ -105,7 +105,7 @@ online_moves:
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from chessdb. (Comment this line for max moves)
   online_egtb:
-    enabled: false                        # Activate online endgame tablebases from Lichess.
+    enabled: true                        # Activate online endgame tablebases from Lichess.
     min_time: 5                           # Time the bot must have at least to use the online move. +10 seconds in games without increment.
     timeout: 3                            # Time the server has to respond.
 
@@ -180,7 +180,7 @@ messages:
   #   {cpu} to insert CPU information
   #   {ram} to insert RAM size
   # Any other words in curly braces will be removed.
-  greeting: "Hey, I'm running {engine}. Good luck! Type !help for a list of commands." # Message sent to the opponent at the beginning of a game.
+  greeting: "Hey, I'm {me}. Good luck! Type !help for a list of commands." # Message sent to the opponent at the beginning of a game.
   goodbye: "Good game, see you next time."                                             # Message sent to the opponent after the end of a game.
   greeting_spectators: "Hey, I'm running {engine}. Type !help for a list of commands." # Message sent to the spectators at the beginning of a game.
   goodbye_spectators: "Thanks for watching."                                           # Message sent to the spectators after the end of a game.
