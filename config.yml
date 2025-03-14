@@ -160,13 +160,13 @@ matchmaking:
   selection: weighted_random              # Matchmkaing type selection is "weighted_random" or "sequential".
   types:                                  # Matchmaking types of which one is selected before each game.
     bullet:                               # Arbitrary name of the matchmaking type. Names must be unique.
-      tc: 1+1                             # Time control in initial_minutes+increment_seconds format.
+      tc: 1+0                             # Time control in initial_minutes+increment_seconds format.
     hyperbullet:
       tc: 0.5+0
     blitz:
       tc: 3+0
     superblitz:
-      tc: 3+1   
+      tc: 2+0   
 #   casual_chess960:
 #     tc: 0.5+1
 #     rated: false
