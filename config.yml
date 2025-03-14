@@ -166,7 +166,7 @@ matchmaking:
     blitz:
       tc: 3+0
     superblitz:
-      tc 3+1   
+      tc: 3+1   
 #   casual_chess960:
 #     tc: 0.5+1
 #     rated: false
