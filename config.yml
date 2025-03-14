@@ -3,13 +3,13 @@ token: "lip_uVpQ5XayMI9iDDR2jsqU"         # Lichess OAuth2 Token.
 engines:
   standard:                               # Engine used for standard chess and when no suitable special engine is configured.
     dir: "./engines"                      # Directory containing the engine.
-    name: "stockfish.exe"                     # Binary name of the engine to use.
+    name: "stockfish"                     # Binary name of the engine to use.
     ponder: true                          # Think on opponent's time.
     silence_stderr: false                 # Suppresses stderr output.
     move_overhead_multiplier: 1.0         # Increase if your bot flags games too often. Default move overhead is 1 second per 1 minute initital time.
     uci_options:                          # Arbitrary UCI options passed to the engine. (Commenting allowed)
-      Threads: 2                          # Max CPU threads the engine can use.
-      Hash: 256                           # Max memory (in megabytes) the engine can allocate.
+      Threads: 4                          # Max CPU threads the engine can use.
+      Hash: 4096                            # Max memory (in megabytes) the engine can allocate.
       Move Overhead: 200                  # Increase if your bot flags games too often.
 # variants:                               # Engine used for variants when no suitable special engine is configured.
 #   dir: "./engines"                      # Directory containing the engine.
@@ -52,7 +52,7 @@ gaviota:
   max_pieces: 5                           # Count of max pieces in the local gaviota endgame tablebases.
 
 opening_books:
-  enabled: false                          # Activate opening books.
+  enabled: true                          # Activate opening books.
   priority: 400                           # Priority with which this move source is used. Higher priority is used first.
   books:
 #   bullet:
@@ -68,7 +68,8 @@ opening_books:
       selection: weighted_random          # Move selection is one of "weighted_random", "uniform_random" or "best_move".
 #     max_depth: 16                       # Half move max depth. (Comment this line for max depth)
       names:                              # List of names of books to use if there is no specific book for the time control, white, black or chess960.
-        - DefaultBook
+        - optimus32.bin
+        - optimus2409.bin
 #   Use the same pattern for 'bullet', 'blitz', 'rapid', 'classical',
 #   'antichess', 'atomic', 'chess960', 'crazyhouse', 'horde', 'kingofthehill', 'racingkings' and '3check' as well.
 #   Append '_white' or '_black' to use the books only as the specific color.
@@ -200,4 +201,5 @@ messages:
 #   - Username2
 
 books:                                    # Names of the opening books (to be used above in the opening_books section) and paths to the opening books.
-  DefaultBook: "/path/to/DefaultBook.bin"
+  optimus32: "./engines/optimus32.bin"
+  optimus2409: "./engines/optimus2409.bin"
