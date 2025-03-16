@@ -26,8 +26,9 @@ jobs:
 
       - name: Run bot
         env:
-          LICHESS_KEY: ${{ secrets.LICHESS_KEY }}
+          LICHESS_TOKEN: ${{ secrets.LICHESS_KEY }}
         run: |
+          export LICHESS_TOKEN=${{ secrets.LICHESS_KEY }}
           chmod +x ./engines/stockfish
           python3 user_interface.py --config config.yml
 
