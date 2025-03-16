@@ -1,4 +1,4 @@
-token: "${LICHESS_KEY}"
+token: "lip_Hsob2aZoh714iUwSzIGd"
 
 engines:
   standard:                               # Engine used for standard chess and when no suitable special engine is configured.
