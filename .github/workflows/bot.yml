@@ -24,9 +24,6 @@ jobs:
       - name: Python Dependency Installation
         uses: py-actions/py-dependency-install@v4.0.0
 
-      - name: Set Lichess Key
-        run: echo "LICHESS_KEY=${{ secrets.LICHESS_KEY }}" >> $GITHUB_ENV
-
       - name: Run bot
         env:
           LICHESS_KEY: ${{ secrets.LICHESS_KEY }}
