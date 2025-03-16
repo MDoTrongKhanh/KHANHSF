@@ -1,4 +1,4 @@
-token: "Nothere"         # Lichess OAuth2 Token.
+token: ${LICHESS_KEY}
 
 engines:
   standard:                               # Engine used for standard chess and when no suitable special engine is configured.
