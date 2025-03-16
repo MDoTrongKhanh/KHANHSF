@@ -28,6 +28,9 @@ jobs:
         run: echo "LICHESS_KEY=${{ secrets.LICHESS_KEY }}" >> $GITHUB_ENV
 
       - name: Run bot
+        env:
+          LICHESS_KEY: ${{ secrets.LICHESS_KEY }}
         run: |
           chmod +x ./engines/stockfish
           python3 user_interface.py --config config.yml
+
