@@ -97,7 +97,7 @@ online_moves:
 #   max_depth: 16                         # Half move max depth. (Comment this line for max depth)
 #   max_moves: 1                          # Max number of moves played from Lichess cloud eval. (Comment this line for max moves)
   chessdb:
-    enabled: true                        # Activate online moves from https://chessdb.cn/queryc_en/
+    enabled: false                        # Activate online moves from https://chessdb.cn/queryc_en/
     priority: 100                         # Priority with which this move source is used. Higher priority is used first.
     min_eval_depth: 10                    # Minimum evaluation depth.
     min_time: 10                          # Time the bot must have at least to use the online move. +10 seconds in games without increment.
@@ -155,8 +155,8 @@ challenge:                                # Incoming challenges. (Commenting all
     - rated                               # Rated games
 
 matchmaking:
-  delay: 20                               # Time in seconds the bot must be idle before a new challenge is started.
-  timeout: 5                             # Time until a challenge is canceled.
+  delay: 240                               # Time in seconds the bot must be idle before a new challenge is started.
+  timeout: 30                             # Time until a challenge is canceled.
   selection: weighted_random              # Matchmkaing type selection is "weighted_random" or "sequential".
   types:                                  # Matchmaking types of which one is selected before each game.
     bullet:                               # Arbitrary name of the matchmaking type. Names must be unique.
