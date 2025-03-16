@@ -32,3 +32,4 @@ jobs:
           chmod +x ./engines/stockfish
           python3 user_interface.py --config config.yml
 
+
