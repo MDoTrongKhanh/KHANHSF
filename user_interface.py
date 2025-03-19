@@ -47,9 +47,9 @@ class User_Interface:
                    tournament_team: str | None,
                    tournament_password: str | None,
                    allow_upgrade: bool) -> None:
-        token = os.getenv("LICHESS_TOKEN")
+        token = os.getenv("LICHESS_KEY")
         if not token:
-            print("Error: LICHESS_TOKEN secret is not set.")
+            print("Error: LICHESS_KEY secret is not set.")
             sys.exit(1)
         
         self.config = Config.from_yaml(config_path)
