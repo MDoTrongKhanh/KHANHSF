@@ -39,6 +39,26 @@ COMMANDS = {
 
 EnumT = TypeVar('EnumT', bound=Enum)
 
+def get_lichess_token():
+    """Lấy token từ file secrets hoặc biến môi trường"""
+    token_path = "secrets/token.txt"  # Đường dẫn file chứa token
+    
+    # Thử đọc token từ file
+    if os.path.exists(token_path):
+        with open(token_path, "r") as f:
+            token = f.read().strip()
+            if token:
+                return token
+    
+    # Nếu không có file, lấy từ biến môi trường
+    token = os.getenv("LICHESS_KEY")
+    if token:
+        return token
+    
+    # Nếu không tìm thấy token, báo lỗi
+    print("Error: LICHESS_KEY secret is not set in file or environment.")
+    sys.exit(1)
+
 class User_Interface:
     async def main(self,
                    config_path: str,
@@ -47,10 +67,7 @@ class User_Interface:
                    tournament_team: str | None,
                    tournament_password: str | None,
                    allow_upgrade: bool) -> None:
-        token = os.getenv("LICHESS_KEY")
-        if not token:
-            print("Error: LICHESS_KEY secret is not set.")
-            sys.exit(1)
+        token = get_lichess_token()  # Lấy token từ file hoặc biến môi trường
         
         self.config = Config.from_yaml(config_path)
         self.config.token = token
