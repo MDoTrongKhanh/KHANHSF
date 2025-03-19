@@ -1,5 +1,8 @@
+# This is a basic workflow to help you get started with Actions
+
 name: Run bot
 
+# Controls when the workflow will run
 on:
   workflow_dispatch:
   push:
@@ -14,22 +17,24 @@ concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
       - name: Python Dependency Installation
         uses: py-actions/py-dependency-install@v4.0.0
 
-      - name: Run bot
-        env:
-          LICHESS_KEY: ${{ secrets.LICHESS_KEY }}
+      # Runs a single command using the runners shell
+      - name: Run a multi-line script
         run: |
-          export LICHESS_KEY=${{ secrets.LICHESS_KEY }}
+          echo ${{ secrets.LICHESS_KEY }} > key.txt
           chmod +x ./engines/stockfish
-          python3 user_interface.py --config config.yml
-
-
+          python3 user_interface.py --matchmaking
