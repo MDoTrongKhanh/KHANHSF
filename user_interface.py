@@ -62,6 +62,8 @@ class User_Interface:
 
             self.game_manager = Game_Manager(self.api, self.config, username)
             self.game_manager_task = asyncio.create_task(self.game_manager.run())
+            # Thêm `await` để chạy `game_manager_task` trong hàm `async`
+            await self.game_manager_task
 
     def handle_command(self, command: str):
         try:
@@ -77,7 +79,6 @@ class User_Interface:
                 print("Command not recognized or requires additional parameters.")
         except Exception as e:
             print(f"An error occurred while handling the command: {e}")
-
 
             if tournament_id:
                 self.game_manager.request_tournament_joining(tournament_id, tournament_team, tournament_password)
