@@ -70,7 +70,7 @@ class User_Interface:
         # Dùng asyncio.run để chạy hàm async main
         asyncio.run(self.main(config_path, start_matchmaking, tournament_id, tournament_team, tournament_password, allow_upgrade))
 
-            if tournament_id:
+                       if tournament_id:
                 self.game_manager.request_tournament_joining(tournament_id, tournament_team, tournament_password)
 
             self.event_handler = Event_Handler(self.api, self.config, username, self.game_manager)
