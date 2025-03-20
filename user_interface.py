@@ -62,23 +62,13 @@ class User_Interface:
 
             self.game_manager = Game_Manager(self.api, self.config, username)
             self.game_manager_task = asyncio.create_task(self.game_manager.run())
-            # Thêm `await` để chạy `game_manager_task` trong hàm `async`
+            # Thêm dòng `await` để thực thi nhiệm vụ bất đồng bộ
             await self.game_manager_task
 
-    def handle_command(self, command: str):
-        try:
-            if command.startswith('read_token'):
-                # Sử dụng biến LICHESS_KEY mặc định nếu không có tên biến được cung cấp
-                token_name = command.split(' ')[1] if len(command.split(' ')) > 1 else "LICHESS_KEY"
-                token = os.getenv(token_name)
-                if token:
-                    print(f"Token value: {token}")
-                else:
-                    print(f"Environment variable '{token_name}' is not set.")
-            else:
-                print("Command not recognized or requires additional parameters.")
-        except Exception as e:
-            print(f"An error occurred while handling the command: {e}")
+    def start(self, config_path: str, start_matchmaking: bool, tournament_id: str | None,
+              tournament_team: str | None, tournament_password: str | None, allow_upgrade: bool):
+        # Dùng asyncio.run để chạy hàm async main
+        asyncio.run(self.main(config_path, start_matchmaking, tournament_id, tournament_team, tournament_password, allow_upgrade))
 
             if tournament_id:
                 self.game_manager.request_tournament_joining(tournament_id, tournament_team, tournament_password)
