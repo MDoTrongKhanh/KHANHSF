@@ -28,19 +28,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - name: Install Setuptools
+        run: |
+          python3 -m pip install --upgrade pip setuptools
 
-steps:
-  - uses: actions/checkout@v3
+      - name: Python Dependency Installation
+        uses: py-actions/py-dependency-install@v4.0.0
 
-  - name: Install Setuptools
-    run: |
-      python3 -m pip install --upgrade pip setuptools
-
-  - name: Python Dependency Installation
-    uses: py-actions/py-dependency-install@v4.0.0
-
-  - name: Run a multi-line script
-    run: |
-      echo ${{ secrets.LICHESS_KEY }} > key.txt
-      chmod +x ./engines/stockfish
-      python3 user_interface.py --matchmaking
+      - name: Run a multi-line script
+        run: |
+          echo ${{ secrets.LICHESS_KEY }} > key.txt
+          chmod +x ./engines/stockfish
+          python3 user_interface.py --matchmaking
